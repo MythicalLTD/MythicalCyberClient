@@ -17,9 +17,13 @@ $_CONFIG["app_name"] = "MythicalSystems";
 # CyberPanel MySQL Config
 $_CONFIG["db_host"] = "localhost";
 $_CONFIG["db_port"] = "3306";
-$_CONFIG["db_name"] = "MythicalCyberClient";
+$_CONFIG["db_name"] = "CyberPanel";
 $_CONFIG["db_username"] = "root";
 $_CONFIG["db_password"] = "";
 
+#Cyberpanel Connection Config
+$_CONFIG["cb_url"] = 'https://yourpanel.yourdoamin.tech:8090';
+$_CONFIG["cb_auth"] = "Basic dasddajsjkdajksdjkakjsdkjaskjkj=";
+$_CONFIG["cb_user"] = "admin";
 
 ?>
