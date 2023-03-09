@@ -25,17 +25,5 @@ $response = curl_exec($curl);
 
 curl_close($curl);
 echo $response;
-$data = json_decode($response, true);
-if ($data['error_message'] == null){
-    
-}
-else if ($data['error_message'] == "")
-{
-    echo '<script>alert("FATAL ERROR: CHECK CONFIG NOW!!!");</script>';
-}
-else 
-{
-    echo '<script>alert("'.$data['error_message'].'")</script>';
-}
 
 ?>

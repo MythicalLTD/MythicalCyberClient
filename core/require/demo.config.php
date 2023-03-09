@@ -2,7 +2,7 @@
 /**
  * @var array $_CONFIG
  */
-# PLEASE READ ALL THE COMMENTS TO HELP YOU LEARN HOW TO CONFIGURE SHADOW'S DASH.
+# PLEASE READ ALL THE COMMENTS TO HELP YOU LEARN HOW TO CONFIGURE NythicalCyberClient
 # NO HELP WILL BE PROVIDED IF THE QUESTION CAN BE ANSWERED IN THIS CONFIG FILE.
 # ============================================
 # Thanks for installing MythicalCyberClient!
@@ -13,6 +13,9 @@
 #
 
 $_CONFIG["app_name"] = "MythicalSystems";
+$_CONFIG["app_logo"] = "https://avatars.githubusercontent.com/u/117385445";
+$_CONFIG["app_favicon"] = "https://avatars.githubusercontent.com/u/117385445";
+ 
 
 # CyberPanel MySQL Config
 $_CONFIG["db_host"] = "localhost";

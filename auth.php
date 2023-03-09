@@ -32,19 +32,49 @@ curl_close($curl);
 $data = json_decode($response, true);
 
 
-if ($data['error_message'] == null)
-{
-
-}
-else
-{
-	echo '<script>alert("There was an error please send this error to the website owner: '.$data['error_message'].'");</script>';
-	echo '<font color="red">There was an error please send this to the owner: <code>'.$data['error_message'].'</code></font>';
+if (empty($data['error_message'])) {
+	// do something when there is no error message
+  } else {
+	$error_message = htmlspecialchars($data['error_message']);
+	echo '<script>alert("There was an error please send this error to the website owner: '.$error_message.'");</script>';
+	echo '<font color="red">There was an error please send this to the owner:</font> <font color="darkred"><code>'.$error_message.'</code></font>';
 	exit();
-}
+  }
 
 if (isset($_GET['register'])) {
-	
+	$username = mysqli_real_escape_string($dbconn, $_GET['username']);
+	$email = mysqli_real_escape_string($dbconn, $_GET['email']);
+    $password = mysqli_real_escape_string($dbconn, $_GET['password']);
+	$random_str = bin2hex(random_bytes(4));
+	$current_date = date("Y-m-d H:i:s");
+	$token = $current_date . $username . $random_str;
+	$base64_token = base64_encode($token);
+	$token = bin2hex($base64_token);
+	$insecure_passwords = array("password", "1234", "qwerty","qwertz", "test", "testing", "letmein", "admin", "pass", "123456789", "dad", "mom", "kek", "fuck", "pussy");
+    if (in_array($password, $insecure_passwords)) {
+        $_SESSION['error'] = "Password is not secure. Please choose a different one";
+        echo '<script>window.location.replace("/auth/register");</script>';
+        die();
+    } else {
+        
+    }
+    $blocked_usernames = array("password", "1234", "qwerty", "letmein", "admin", "pass", "123456789", "dad", "mom", "kek", "fuck", "pussy", "plexed", "badsk", "username", "sex", "porn", "nudes", "nude", "ass", "hacker", "bigdick");
+    if (in_array($username, $blocked_usernames)) {
+        $_SESSION['error'] = "Please don`t use this username we blocked it!";
+        echo '<script>window.location.replace("/auth/register");</script>';
+        die();
+    } else {
+        
+    }
+    if (preg_match("/[^a-zA-Z]+/", $username)) {
+      $_SESSION['error'] = "Please don`t use this username we blocked it!";
+      echo '<script>window.location.replace("/auth/register");</script>';
+      die();
+    } else {
+        
+    }
+
+
 }
 
 ?>
